@@ -68,6 +68,7 @@ class _IndicatorsState extends State<Indicators> {
           (index) => _Indicator(
             index: index,
             indicatorColor: widget.color,
+            indicatorHeight: widget.height,
             value: (index == currentStoryIndex)
                 ? indicatorAnimation.value
                 : (index > currentStoryIndex)
