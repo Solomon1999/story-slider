@@ -5,17 +5,19 @@ import 'package:story/story_page_view/story_limit_controller.dart';
 import '../story_stack_controller.dart';
 
 class Indicators extends StatefulWidget {
-  const Indicators({
-    Key? key,
-    required this.animationController,
-    required this.storyLength,
-    required this.isCurrentPage,
-    required this.isPaging,
-    required this.padding,
-  }) : super(key: key);
+  const Indicators(
+      {Key? key,
+      required this.animationController,
+      required this.storyLength,
+      required this.isCurrentPage,
+      required this.isPaging,
+      required this.padding,
+      required this.color})
+      : super(key: key);
   final int storyLength;
   final AnimationController? animationController;
   final EdgeInsetsGeometry padding;
+  final Color color;
   final bool isCurrentPage;
   final bool isPaging;
 
@@ -63,6 +65,7 @@ class _IndicatorsState extends State<Indicators> {
           widget.storyLength,
           (index) => _Indicator(
             index: index,
+            indicatorColor: widget.color,
             value: (index == currentStoryIndex)
                 ? indicatorAnimation.value
                 : (index > currentStoryIndex)
@@ -82,23 +85,27 @@ class _IndicatorsState extends State<Indicators> {
 }
 
 class _Indicator extends StatelessWidget {
-  const _Indicator({
-    Key? key,
-    required this.index,
-    required this.value,
-  }) : super(key: key);
+  const _Indicator(
+      {Key? key,
+      required this.index,
+      required this.value,
+      required this.indicatorColor,
+      this.sidePadding: 4})
+      : super(key: key);
   final int index;
   final double value;
+  final Color indicatorColor;
+  final double sidePadding;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.only(left: (index == 0) ? 0 : 4),
+        padding: EdgeInsets.only(left: (index == 0) ? 0 : sidePadding),
         child: LinearProgressIndicator(
           value: value,
-          backgroundColor: Colors.black.withOpacity(0.08),
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          backgroundColor: indicatorColor.withOpacity(0.2),
+          valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
           minHeight: 2,
         ),
       ),
