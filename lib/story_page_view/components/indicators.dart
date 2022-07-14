@@ -115,11 +115,10 @@ class _Indicator extends StatelessWidget {
               borderRadius: BorderRadius.circular(indicatorHeight / 2)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: LinearProgressIndicator(
-            value: value,
-            backgroundColor: indicatorColor.withOpacity(0.1),
-            valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
-            minHeight: indicatorHeight,
-          ),
+              value: value,
+              backgroundColor: indicatorColor.withOpacity(0.1),
+              valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
+              minHeight: indicatorHeight),
         ),
       ),
     );
