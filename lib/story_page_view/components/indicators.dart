@@ -109,7 +109,7 @@ class _Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.only(left: (index == 0) ? 0 : sidePadding),
+        margin: EdgeInsets.only(left: (index == 0) ? 0 : sidePadding),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(indicatorHeight / 2)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
