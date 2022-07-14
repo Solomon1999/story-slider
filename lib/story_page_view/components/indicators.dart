@@ -108,16 +108,18 @@ class _Indicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        margin: EdgeInsets.only(left: (index == 0) ? 0 : sidePadding),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(indicatorHeight / 2)),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: LinearProgressIndicator(
-          value: value,
-          backgroundColor: indicatorColor.withOpacity(0.1),
-          valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
-          minHeight: indicatorHeight,
+      child: Padding(
+        padding: EdgeInsets.only(left: (index == 0) ? 0 : sidePadding),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(indicatorHeight / 2)),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: LinearProgressIndicator(
+            value: value,
+            backgroundColor: indicatorColor.withOpacity(0.1),
+            valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
+            minHeight: indicatorHeight,
+          ),
         ),
       ),
     );
