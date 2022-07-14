@@ -35,6 +35,7 @@ class StoryPageView extends StatefulWidget {
     this.indicatorDuration = const Duration(seconds: 5),
     this.indicatorPadding =
         const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
+    this.indicatorSpacing = 5,
     this.indicatorHeight = 2,
     this.indicatorColor: Colors.white,
     this.backgroundColor = Colors.black,
@@ -64,6 +65,9 @@ class StoryPageView extends StatefulWidget {
 
   /// height of [Indicators]
   final double indicatorHeight;
+
+  /// spacing of [Indicators]
+  final double indicatorSpacing;
 
   /// color of [Indicators]
   final Color indicatorColor;
@@ -155,6 +159,7 @@ class _StoryPageViewState extends State<StoryPageView> {
                   indicatorPadding: widget.indicatorPadding,
                   indicatorColor: widget.indicatorColor,
                   indicatorHeight: widget.indicatorHeight,
+                  indicatorSpacing: widget.indicatorSpacing,
                   indicatorAnimationController:
                       widget.indicatorAnimationController,
                 ),
@@ -190,6 +195,7 @@ class _StoryPageFrame extends StatefulWidget {
     required this.indicatorPadding,
     required this.indicatorColor,
     required this.indicatorHeight,
+    required this.indicatorSpacing,
     required this.indicatorAnimationController,
   }) : super(key: key);
   final int storyLength;
@@ -203,6 +209,7 @@ class _StoryPageFrame extends StatefulWidget {
   final EdgeInsetsGeometry indicatorPadding;
   final Color indicatorColor;
   final double indicatorHeight;
+  final double indicatorSpacing;
   final ValueNotifier<IndicatorAnimationCommand>? indicatorAnimationController;
 
   static Widget wrapped({
@@ -220,6 +227,7 @@ class _StoryPageFrame extends StatefulWidget {
     required EdgeInsetsGeometry indicatorPadding,
     required Color indicatorColor,
     required double indicatorHeight,
+    required double indicatorSpacing,
     required ValueNotifier<IndicatorAnimationCommand>?
         indicatorAnimationController,
   }) {
@@ -261,6 +269,7 @@ class _StoryPageFrame extends StatefulWidget {
         indicatorPadding: indicatorPadding,
         indicatorColor: indicatorColor,
         indicatorHeight: indicatorHeight,
+        indicatorSpacing: indicatorSpacing,
         indicatorAnimationController: indicatorAnimationController,
       ),
     );
@@ -353,7 +362,8 @@ class _StoryPageFrameState extends State<_StoryPageFrame>
             isPaging: widget.isPaging,
             padding: widget.indicatorPadding,
             height: widget.indicatorHeight,
-            color: widget.indicatorColor),
+            color: widget.indicatorColor,
+            spacing: widget.indicatorSpacing),
         Gestures(
           animationController: animationController,
         ),
