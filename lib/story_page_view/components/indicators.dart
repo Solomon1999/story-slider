@@ -115,7 +115,7 @@ class _Indicator extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: LinearProgressIndicator(
           value: value,
-          backgroundColor: indicatorColor.withOpacity(0.2),
+          backgroundColor: indicatorColor.withOpacity(0.1),
           valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
           minHeight: indicatorHeight,
         ),
