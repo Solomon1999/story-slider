@@ -12,12 +12,14 @@ class Indicators extends StatefulWidget {
       required this.isCurrentPage,
       required this.isPaging,
       required this.padding,
-      required this.color})
+      required this.color,
+      required this.height})
       : super(key: key);
   final int storyLength;
   final AnimationController? animationController;
   final EdgeInsetsGeometry padding;
   final Color color;
+  final double height;
   final bool isCurrentPage;
   final bool isPaging;
 
@@ -90,12 +92,14 @@ class _Indicator extends StatelessWidget {
       required this.index,
       required this.value,
       required this.indicatorColor,
+      this.indicatorHeight: 2,
       this.sidePadding: 4})
       : super(key: key);
   final int index;
   final double value;
   final Color indicatorColor;
   final double sidePadding;
+  final double indicatorHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +110,7 @@ class _Indicator extends StatelessWidget {
           value: value,
           backgroundColor: indicatorColor.withOpacity(0.2),
           valueColor: AlwaysStoppedAnimation<Color>(indicatorColor),
-          minHeight: 2,
+          minHeight: indicatorHeight,
         ),
       ),
     );
